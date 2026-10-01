@@ -1,178 +1,52 @@
-# 🌊 WEAP Syrdarya — Проект Интерактивной Карты
+# WEAP Syrdarya
 
-Проект, который **сам читает ваши файлы** и строит интерактивную карту
-со всеми точками, линиями и полигонами. Ничего не нужно кодить.
+An interactive map and charts for a WEAP model. Drop your files into the folders,
+run one script, open the result in a browser - https://aigulbekbayeva.github.io/weap_model/.
 
----
+## Getting started
 
-## 🚀 Быстрый Старт (3 шага)
+Put your files where they belong (see below), then run `run.bat` on Windows or
+`./run.sh` on Mac and Linux. The map opens by itself — it lives at `output/index.html`.
 
-### 1. Положите свои файлы в папки
+Python 3 is the only requirement; the script installs the libraries it needs on
+the first run.
 
-```
-shapefiles/     ← ваши .shp (участки, границы) + .shx .dbf .prj
-kml/            ← export.kmz из WEAP
-csv/            ← данные по годам (опционально)
-```
+## What goes where
 
-### 2. Запустите
+**shapefiles/** — your `.shp` files: water management zones, basin boundaries, any
+polygons you want on the map. Copy the whole set together (`.shp`, `.shx`, `.dbf`,
+`.prj`), not just the one file. Each shapefile becomes its own layer with a
+checkbox, named after the file.
 
-**Windows:** двойной клик по `run.bat`
+**kml/** — the `.kmz` you export from WEAP (Schematic → Export to Google Earth).
+Demand sites, rivers, canals, transmission links, gauges, reservoirs, groundwater
+and flow requirements are all read out of it.
 
-**Mac / Linux:**
-```bash
-chmod +x run.sh
-./run.sh
-```
+**csv/** — tables of values over time. The file name decides what the data is:
+`demand_consumption.csv`, `gauge_modeled.csv`, `reservoir_volume.csv`, and so on.
 
-### 3. Карта откроется сама
 
-Файл: `output/index.html`
+**docs/** — the result. `index.html` is the map, `weap-data.js` holds everything
+the scripts collected, and `lib/` keeps Leaflet and Chart.js locally so the page
+works without an internet connection.
 
----
+**scripts/** — the processing itself. Nothing here needs touching.
 
-## 📁 Структура Проекта
+## Worth knowing
 
-```
-weap-full-project/
-│
-├── run.bat                  ← ЗАПУСК (Windows)
-├── run.sh                   ← ЗАПУСК (Mac/Linux)
-├── requirements.txt         ← библиотеки Python
-│
-├── shapefiles/              ← 📥 ВАШИ ШЕЙПЫ СЮДА
-│   └── (uchastki.shp, .shx, .dbf, .prj)
-│
-├── kml/                     ← 📥 ВАШ KMZ СЮДА
-│   └── (export.kmz)
-│
-├── csv/                     ← 📥 ВАШИ ДАННЫЕ СЮДА
-│   └── (consumption.csv, streamflow.csv)
-│
-├── scripts/                 ← обработка (не трогать)
-│   ├── convert_shapefiles.py    .shp → GeoJSON + перепроекция
-│   ├── parse_kml.py             KMZ → точки и линии
-│   └── build_data.py            всё → weap-data.js
-│
-└── output/                  ← 📤 РЕЗУЛЬТАТ
-    ├── index.html               ← КАРТА (откройте это)
-    ├── weap-data.js             ← собранные данные
-    ├── kml_extracted.json       ← что нашлось в KMZ
-    └── *.geojson                ← ваши участки
-```
+Shapefiles are reprojected to WGS84 automatically, so whatever projection yours
+are in will work.
+
+CSV tables are read in either orientation — objects in rows or time in rows — so
+a WEAP export needs no reshaping. Dates can be `2020`, `2020-01`, `01.2020` or
+`Jan-2020`; the separator and decimal mark are detected too.
+
+Names in the CSV are matched against names in the KMZ by the WEAP zone code and
+category.
+
+Everything in `docs/` is self-contained — to publish on GitHub Pages, copy that
+folder and nothing else.
 
 ---
 
-## ✅ Что Читается Автоматически
-
-### Из KMZ (экспорт WEAP)
-
-Скрипт читает **структуру папок внутри KML**, а не угадывает по именам —
-поэтому **ничего не теряется**:
-
-| Папка в WEAP | Слой на карте | Вид |
-|---|---|---|
-| Demand Sites | Узлы спроса | 🔴 точки |
-| Rivers / Reaches | Реки | 🔵 линии |
-| Diversions | Каналы | 🟠 пунктир |
-| Transmission Links | Передачи (забор→сброс) | 🟣 пунктир |
-| Return Flows | Возвратные потоки | 🟣 пунктир |
-| Streamflow Gauges | Гидропосты | 🟢 точки |
-| Reservoirs | Водохранилища | 🔷 крупные точки |
-| Groundwater | Подземные воды | 🟤 точки |
-| Flow Requirements | Экосток | 🟩 точки |
-| Withdrawals | Узлы забора | 🔵 точки |
-
-**Всё нераспознанное** попадает в «Прочие точки» / «Прочие линии» —
-тоже отображается, ничего не пропадает.
-
-После запуска скрипт печатает список найденных папок — проверьте,
-что все ваши элементы на месте.
-
-### Из Shapefiles
-
-- Каждый `.shp` = отдельный слой с галочкой
-- **Автоперепроецирование в WGS84** — работает с любой проекцией
-- Атрибуты из `.dbf` показываются во всплывающем окне
-- Крупные полигоны упрощаются для скорости
-
-### Из CSV
-
-- Все `.csv` читаются и кладутся в данные карты
-- Привязка к точкам по имени в первом столбце
-
----
-
-## 🎛️ Возможности Карты
-
-- Галочка для **каждого** слоя (включить / выключить)
-- Клик на объект → всплывающее окно с атрибутами
-- Счётчик объектов в каждом слое
-- Автомасштаб на ваши данные
-- Слайдер года 2020–2025
-- Работает на телефоне
-
----
-
-## 🔧 Если Что-то Не Так
-
-### Полигоны не видны / не на месте
-Проекция. Проверьте, что рядом с `.shp` лежит `.prj`.
-Скрипт печатает охват координат — должно быть примерно
-`40–47°N, 60–71°E`. Если другое — проекция не та.
-
-### «Нет .shp файлов»
-Проверьте, что файлы лежат **прямо в** `shapefiles/`, а не
-во вложенной папке.
-
-### Русские названия — кракозябры
-Добавьте рядом файл `имя.cpg` с одной строкой: `UTF-8`
-(или `CP1251`, если шейп делался в старой версии ArcGIS).
-
-### Каких-то элементов нет на карте
-Посмотрите вывод `parse_kml.py` — он печатает **все найденные папки**
-и количество объектов. Если папка есть, а слоя нет — напишите мне
-название папки, добавлю правило.
-
-### geopandas не ставится
-```bash
-pip install --break-system-packages geopandas
-```
-Или через conda: `conda install -c conda-forge geopandas`
-
-Шейпы можно конвертировать и без Python — на [mapshaper.org](https://mapshaper.org):
-перетащите все файлы шейпа → Export → GeoJSON → положите результат
-в `output/`, затем запустите только `python scripts/build_data.py`.
-
----
-
-## 🌐 Публикация на GitHub Pages
-
-```bash
-cd output
-git init
-git add .
-git commit -m "WEAP Syrdarya dashboard"
-git branch -M main
-git remote add origin https://github.com/ВАШ_ЛОГИН/weap-syrdarya.git
-git push -u origin main
-```
-
-Затем: **Settings → Pages → Branch: main → /(root) → Save**
-
-Сайт: `https://ВАШ_ЛОГИН.github.io/weap-syrdarya`
-
-> В папке `output/` уже всё самодостаточное — `index.html` + `weap-data.js`.
-> Больше ничего копировать не нужно.
-
----
-
-## 🔄 Обновление Данных
-
-Поменяли модель в WEAP? Новый экспорт?
-
-1. Замените `kml/export.kmz` на новый
-2. Запустите `run.bat` / `./run.sh` снова
-3. Карта обновится
-
-Скрипты перезаписывают результат — старое не мешает.
+Developed by A. Bekbayeva · [LinkedIn](https://www.linkedin.com/in/aigulbekbayeva/)
