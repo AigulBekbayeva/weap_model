@@ -1,0 +1,2971 @@
+{
+ "demand_sites": [
+  {
+   "name": "Agriculture_Aral_01.00.01.06",
+   "lat": 45.73017,
+   "lon": 64.17225,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Agriculture_Arys_01.00.01.03",
+   "lat": 43.45772,
+   "lon": 68.79854,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Agriculture_BKMK_01.00.01.02",
+   "lat": 41.44353,
+   "lon": 68.89143,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Agriculture_Dostyk_01.00.01.01",
+   "lat": 40.80097,
+   "lon": 68.1713,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Agriculture_Kyzylkum_01.00.01.04",
+   "lat": 42.19183,
+   "lon": 68.01304,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Agriculture_Kyzylorda_01.00.01.05",
+   "lat": 44.98715,
+   "lon": 66.31895,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_Aral_01.00.01.06",
+   "lat": 46.23979,
+   "lon": 62.40485,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_Arys_01.00.01.03",
+   "lat": 43.34574,
+   "lon": 68.73633,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_BKMK_01.00.01.02",
+   "lat": 41.59475,
+   "lon": 68.89509,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_Dostyk_01.00.01.01",
+   "lat": 40.74776,
+   "lon": 68.51978,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_Kyzylkum_01.00.01.04",
+   "lat": 42.34249,
+   "lon": 67.89252,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Domestic_Kyzylorda_01.00.01.05",
+   "lat": 44.54396,
+   "lon": 66.70553,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Fish_farming_Aral_01.00.01.06",
+   "lat": 46.07282,
+   "lon": 62.61158,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Fish_farming_Arys_01.00.01.03",
+   "lat": 43.20888,
+   "lon": 68.73882,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Green_landscape_Aral_01.00.01.06",
+   "lat": 46.07112,
+   "lon": 64.07944,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Green_landscape_Arys_01.00.01.03",
+   "lat": 43.12277,
+   "lon": 68.60965,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Green_landscape_Kyzylorda_01.00.01.05",
+   "lat": 44.31931,
+   "lon": 66.99529,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "INFLOW_TO_ARAL",
+   "lat": 46.22795,
+   "lon": 60.34959,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Industrial_use_Aral_01.00.01.06",
+   "lat": 46.03505,
+   "lon": 63.3888,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Industrial_use_Arys_01.00.01.03",
+   "lat": 43.58711,
+   "lon": 68.84084,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Industrial_use_BKMK_01.00.01.02",
+   "lat": 41.82824,
+   "lon": 69.17538,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Industrial_use_Kyzylkum_01.00.01.04",
+   "lat": 42.47809,
+   "lon": 67.76295,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Industrial_use_Kyzylorda_01.00.01.05",
+   "lat": 44.79792,
+   "lon": 66.39623,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Other_use_Aral_01.00.01.06",
+   "lat": 46.35111,
+   "lon": 62.14843,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Other_use_Arys_01.00.01.03",
+   "lat": 42.84848,
+   "lon": 68.63832,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Other_use_BKMK_01.00.01.02",
+   "lat": 41.9061,
+   "lon": 69.48223,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Other_use_Kyzylkum_01.00.01.04",
+   "lat": 42.66792,
+   "lon": 67.6605,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "Paddy_Arys_01.00.01.03",
+   "lat": 42.99455,
+   "lon": 68.55896,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  },
+  {
+   "name": "delta_aral_evap",
+   "lat": 46.15998,
+   "lon": 61.07631,
+   "folder": "WEAP Dataset: Syrdarys / Demand Sites",
+   "description": ""
+  }
+ ],
+ "rivers": [
+  {
+   "name": "Syrdarya",
+   "coords": [
+    [
+     41.85017,
+     77.73002
+    ],
+    [
+     41.8842,
+     77.88313
+    ],
+    [
+     41.86718,
+     78.03624
+    ],
+    [
+     41.68005,
+     77.78106
+    ],
+    [
+     41.50993,
+     77.54289
+    ],
+    [
+     41.50993,
+     76.94746
+    ],
+    [
+     41.42487,
+     75.92673
+    ],
+    [
+     41.40786,
+     75.58649
+    ],
+    [
+     41.45889,
+     75.16118
+    ],
+    [
+     41.44188,
+     74.71887
+    ],
+    [
+     41.44188,
+     74.51472
+    ],
+    [
+     41.40786,
+     74.24253
+    ],
+    [
+     41.44188,
+     74.00436
+    ],
+    [
+     41.52694,
+     73.95332
+    ],
+    [
+     41.64603,
+     73.93631
+    ],
+    [
+     41.73109,
+     73.80021
+    ],
+    [
+     41.79914,
+     73.68113
+    ],
+    [
+     41.79914,
+     73.47698
+    ],
+    [
+     41.76511,
+     73.17076
+    ],
+    [
+     41.81615,
+     73.01765
+    ],
+    [
+     41.78212,
+     72.83052
+    ],
+    [
+     41.7481,
+     72.72845
+    ],
+    [
+     41.612,
+     72.57534
+    ],
+    [
+     41.50993,
+     72.33717
+    ],
+    [
+     41.37383,
+     72.18406
+    ],
+    [
+     41.1867,
+     72.11601
+    ],
+    [
+     40.98255,
+     71.89485
+    ],
+    [
+     40.89749,
+     71.55461
+    ],
+    [
+     40.86347,
+     71.31644
+    ],
+    [
+     40.86347,
+     70.99321
+    ],
+    [
+     40.77841,
+     71.01022
+    ],
+    [
+     40.72737,
+     70.85711
+    ],
+    [
+     40.71036,
+     70.77205
+    ],
+    [
+     40.43816,
+     70.39778
+    ],
+    [
+     40.37012,
+     70.31272
+    ],
+    [
+     40.3531,
+     70.1426
+    ],
+    [
+     40.25103,
+     69.88742
+    ],
+    [
+     40.28505,
+     69.75132
+    ],
+    [
+     40.30207,
+     69.63224
+    ],
+    [
+     40.25103,
+     69.42809
+    ],
+    [
+     40.23402,
+     69.30901
+    ],
+    [
+     40.33609,
+     69.13888
+    ],
+    [
+     40.45518,
+     69.10486
+    ],
+    [
+     40.59127,
+     69.08785
+    ],
+    [
+     40.71036,
+     68.95175
+    ],
+    [
+     40.88048,
+     68.7476
+    ],
+    [
+     40.93033,
+     68.71395
+    ],
+    [
+     40.98255,
+     68.67956
+    ],
+    [
+     41.00085,
+     68.65669
+    ],
+    [
+     41.00778,
+     68.64537
+    ],
+    [
+     41.01779,
+     68.62218
+    ],
+    [
+     41.02466,
+     68.60997
+    ],
+    [
+     41.02936,
+     68.60348
+    ],
+    [
+     41.04509,
+     68.58144
+    ],
+    [
+     41.05691,
+     68.56262
+    ],
+    [
+     41.06761,
+     68.54346
+    ],
+    [
+     41.06926,
+     68.53563
+    ],
+    [
+     41.08594,
+     68.51978
+    ],
+    [
+     41.0767,
+     68.49289
+    ],
+    [
+     41.08941,
+     68.43607
+    ],
+    [
+     41.09164,
+     68.40374
+    ],
+    [
+     41.09856,
+     68.38856
+    ],
+    [
+     41.10168,
+     68.35241
+    ],
+    [
+     41.11299,
+     68.3156
+    ],
+    [
+     41.11602,
+     68.29722
+    ],
+    [
+     41.11865,
+     68.28828
+    ],
+    [
+     41.13181,
+     68.281
+    ],
+    [
+     41.14182,
+     68.24995
+    ],
+    [
+     41.14065,
+     68.2391
+    ],
+    [
+     41.14631,
+     68.23413
+    ],
+    [
+     41.1559,
+     68.09056
+    ],
+    [
+     41.16392,
+     68.08585
+    ],
+    [
+     41.16969,
+     68.05011
+    ],
+    [
+     41.19412,
+     68.01851
+    ],
+    [
+     41.22907,
+     67.97134
+    ],
+    [
+     41.2477,
+     67.96447
+    ],
+    [
+     41.25869,
+     67.96081
+    ],
+    [
+     41.29723,
+     67.97983
+    ],
+    [
+     41.31225,
+     67.98302
+    ],
+    [
+     41.35514,
+     68.00682
+    ],
+    [
+     41.38881,
+     68.03686
+    ],
+    [
+     41.39751,
+     68.04383
+    ],
+    [
+     41.40949,
+     68.05069
+    ],
+    [
+     41.45354,
+     68.06683
+    ],
+    [
+     41.50059,
+     68.06751
+    ],
+    [
+     41.53909,
+     68.0726
+    ],
+    [
+     41.69706,
+     68.06712
+    ],
+    [
+     41.83939,
+     68.09333
+    ],
+    [
+     41.95946,
+     68.1102
+    ],
+    [
+     42.00328,
+     68.11816
+    ],
+    [
+     42.1734,
+     68.23724
+    ],
+    [
+     42.27266,
+     68.26428
+    ],
+    [
+     42.36054,
+     68.28828
+    ],
+    [
+     42.43772,
+     68.26428
+    ],
+    [
+     42.49663,
+     68.23724
+    ],
+    [
+     42.52498,
+     68.22438
+    ],
+    [
+     42.55372,
+     68.20298
+    ],
+    [
+     42.61572,
+     68.16919
+    ],
+    [
+     42.63475,
+     68.17366
+    ],
+    [
+     42.64937,
+     68.18216
+    ],
+    [
+     42.67307,
+     68.19663
+    ],
+    [
+     42.69417,
+     68.20298
+    ],
+    [
+     42.71989,
+     68.21299
+    ],
+    [
+     42.74,
+     68.21714
+    ],
+    [
+     42.75992,
+     68.21966
+    ],
+    [
+     42.78584,
+     68.23724
+    ],
+    [
+     42.82571,
+     68.21381
+    ],
+    [
+     42.84358,
+     68.20333
+    ],
+    [
+     42.85206,
+     68.18686
+    ],
+    [
+     42.86457,
+     68.1802
+    ],
+    [
+     42.90493,
+     68.15218
+    ],
+    [
+     42.92732,
+     68.12002
+    ],
+    [
+     42.93534,
+     68.09964
+    ],
+    [
+     42.94611,
+     68.08029
+    ],
+    [
+     42.96765,
+     68.07553
+    ],
+    [
+     42.97507,
+     68.06473
+    ],
+    [
+     43.00177,
+     68.06264
+    ],
+    [
+     43.0185,
+     68.06733
+    ],
+    [
+     43.02683,
+     68.0539
+    ],
+    [
+     43.04102,
+     68.05011
+    ],
+    [
+     43.05844,
+     68.03559
+    ],
+    [
+     43.07137,
+     68.02351
+    ],
+    [
+     43.08421,
+     67.99051
+    ],
+    [
+     43.08492,
+     67.96606
+    ],
+    [
+     43.09314,
+     67.94395
+    ],
+    [
+     43.10053,
+     67.92979
+    ],
+    [
+     43.11487,
+     67.90992
+    ],
+    [
+     43.12928,
+     67.89336
+    ],
+    [
+     43.14786,
+     67.88277
+    ],
+    [
+     43.1766,
+     67.87442
+    ],
+    [
+     43.20924,
+     67.86012
+    ],
+    [
+     43.22816,
+     67.84596
+    ],
+    [
+     43.24592,
+     67.83537
+    ],
+    [
+     43.26057,
+     67.81605
+    ],
+    [
+     43.29172,
+     67.78802
+    ],
+    [
+     43.3335,
+     67.74735
+    ],
+    [
+     43.34046,
+     67.72101
+    ],
+    [
+     43.38127,
+     67.67584
+    ],
+    [
+     43.41817,
+     67.61228
+    ],
+    [
+     43.44374,
+     67.59046
+    ],
+    [
+     43.4633,
+     67.54271
+    ],
+    [
+     43.50035,
+     67.47169
+    ],
+    [
+     43.78956,
+     67.31858
+    ],
+    [
+     44.04474,
+     66.96133
+    ],
+    [
+     43.97669,
+     66.79121
+    ],
+    [
+     44.04474,
+     66.55304
+    ],
+    [
+     44.14681,
+     66.48499
+    ],
+    [
+     44.31693,
+     66.29786
+    ],
+    [
+     44.34209,
+     66.26593
+    ],
+    [
+     44.39836,
+     66.21137
+    ],
+    [
+     44.44234,
+     66.19645
+    ],
+    [
+     44.4821,
+     66.16506
+    ],
+    [
+     44.48706,
+     66.12773
+    ],
+    [
+     44.50978,
+     66.03866
+    ],
+    [
+     44.52649,
+     65.99827
+    ],
+    [
+     44.52108,
+     65.97462
+    ],
+    [
+     44.56297,
+     65.94116
+    ],
+    [
+     44.61991,
+     65.93227
+    ],
+    [
+     44.64016,
+     65.90658
+    ],
+    [
+     44.65727,
+     65.88779
+    ],
+    [
+     44.67377,
+     65.85796
+    ],
+    [
+     44.69463,
+     65.81306
+    ],
+    [
+     44.71654,
+     65.77437
+    ],
+    [
+     44.73945,
+     65.71947
+    ],
+    [
+     44.75925,
+     65.66841
+    ],
+    [
+     44.81029,
+     65.5153
+    ],
+    [
+     45.01443,
+     65.20908
+    ],
+    [
+     45.04846,
+     64.93688
+    ],
+    [
+     45.01443,
+     64.66469
+    ],
+    [
+     45.15053,
+     64.40951
+    ],
+    [
+     45.32065,
+     64.22237
+    ],
+    [
+     45.47376,
+     64.1203
+    ],
+    [
+     45.47849,
+     64.04403
+    ],
+    [
+     45.49077,
+     63.91615
+    ],
+    [
+     45.59285,
+     63.86512
+    ],
+    [
+     45.67791,
+     63.79707
+    ],
+    [
+     45.72894,
+     63.64396
+    ],
+    [
+     45.71193,
+     63.4228
+    ],
+    [
+     45.68584,
+     63.3507
+    ],
+    [
+     45.64388,
+     63.25268
+    ],
+    [
+     45.71193,
+     62.94646
+    ],
+    [
+     45.71193,
+     62.79335
+    ],
+    [
+     45.77998,
+     62.60622
+    ],
+    [
+     45.78628,
+     62.5375
+    ],
+    [
+     45.77998,
+     62.41909
+    ],
+    [
+     45.74595,
+     62.09585
+    ],
+    [
+     45.76036,
+     62.01912
+    ],
+    [
+     45.74595,
+     61.82366
+    ],
+    [
+     45.86504,
+     61.72159
+    ],
+    [
+     46.00114,
+     61.82366
+    ],
+    [
+     46.04101,
+     61.74491
+    ],
+    [
+     46.0487,
+     61.70162
+    ],
+    [
+     46.06004,
+     61.65743
+    ],
+    [
+     46.08851,
+     61.60916
+    ],
+    [
+     46.12022,
+     61.53445
+    ],
+    [
+     46.10215,
+     61.43303
+    ],
+    [
+     46.03516,
+     61.16019
+    ],
+    [
+     46.06601,
+     61.02175
+    ],
+    [
+     46.08015,
+     60.88732
+    ],
+    [
+     46.10321,
+     60.76891
+    ],
+    [
+     46.20709,
+     60.62076
+    ],
+    [
+     46.26073,
+     60.55818
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Keles",
+   "coords": [
+    [
+     41.85286,
+     69.687
+    ],
+    [
+     41.81773,
+     69.60436
+    ],
+    [
+     41.80543,
+     69.57568
+    ],
+    [
+     41.76446,
+     69.52036
+    ],
+    [
+     41.72348,
+     69.46709
+    ],
+    [
+     41.69275,
+     69.4507
+    ],
+    [
+     41.65177,
+     69.39948
+    ],
+    [
+     41.62615,
+     69.36314
+    ],
+    [
+     41.57565,
+     69.325
+    ],
+    [
+     41.51416,
+     69.2679
+    ],
+    [
+     41.50469,
+     69.23358
+    ],
+    [
+     41.48341,
+     69.19542
+    ],
+    [
+     41.47267,
+     69.17163
+    ],
+    [
+     41.45486,
+     69.12514
+    ],
+    [
+     41.4022,
+     69.04349
+    ],
+    [
+     41.35896,
+     68.99879
+    ],
+    [
+     41.32928,
+     68.9718
+    ],
+    [
+     41.29149,
+     68.93671
+    ],
+    [
+     41.26766,
+     68.91108
+    ],
+    [
+     41.26338,
+     68.87905
+    ],
+    [
+     41.25645,
+     68.86858
+    ],
+    [
+     41.23962,
+     68.85719
+    ],
+    [
+     41.16055,
+     68.78691
+    ],
+    [
+     41.12585,
+     68.7516
+    ],
+    [
+     41.11443,
+     68.73639
+    ],
+    [
+     41.11696,
+     68.7283
+    ],
+    [
+     41.11107,
+     68.72035
+    ],
+    [
+     41.10148,
+     68.71405
+    ],
+    [
+     41.09838,
+     68.70971
+    ],
+    [
+     41.07855,
+     68.69485
+    ],
+    [
+     41.06307,
+     68.68493
+    ],
+    [
+     41.04572,
+     68.67626
+    ],
+    [
+     41.03333,
+     68.66077
+    ],
+    [
+     41.00085,
+     68.65669
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Arys",
+   "coords": [
+    [
+     42.53679,
+     70.56974
+    ],
+    [
+     42.52243,
+     70.46443
+    ],
+    [
+     42.51285,
+     70.38545
+    ],
+    [
+     42.49849,
+     70.31364
+    ],
+    [
+     42.49371,
+     70.09585
+    ],
+    [
+     42.52482,
+     70.00011
+    ],
+    [
+     42.55059,
+     69.9215
+    ],
+    [
+     42.56551,
+     69.81104
+    ],
+    [
+     42.59115,
+     69.70317
+    ],
+    [
+     42.59115,
+     69.66694
+    ],
+    [
+     42.59423,
+     69.63153
+    ],
+    [
+     42.62584,
+     69.57588
+    ],
+    [
+     42.61333,
+     69.53389
+    ],
+    [
+     42.6132,
+     69.44004
+    ],
+    [
+     42.60619,
+     69.40416
+    ],
+    [
+     42.61766,
+     69.33891
+    ],
+    [
+     42.60912,
+     69.31487
+    ],
+    [
+     42.60989,
+     69.27413
+    ],
+    [
+     42.60222,
+     69.22556
+    ],
+    [
+     42.59857,
+     69.16026
+    ],
+    [
+     42.59092,
+     69.13219
+    ],
+    [
+     42.58944,
+     69.10259
+    ],
+    [
+     42.55732,
+     69.04533
+    ],
+    [
+     42.54489,
+     68.98552
+    ],
+    [
+     42.51839,
+     68.92667
+    ],
+    [
+     42.50724,
+     68.89582
+    ],
+    [
+     42.49456,
+     68.88214
+    ],
+    [
+     42.52172,
+     68.80667
+    ],
+    [
+     42.52172,
+     68.78856
+    ],
+    [
+     42.53858,
+     68.7887
+    ],
+    [
+     42.54889,
+     68.74329
+    ],
+    [
+     42.5843,
+     68.66667
+    ],
+    [
+     42.58941,
+     68.65752
+    ],
+    [
+     42.60619,
+     68.61435
+    ],
+    [
+     42.64163,
+     68.56635
+    ],
+    [
+     42.64311,
+     68.55251
+    ],
+    [
+     42.66368,
+     68.53599
+    ],
+    [
+     42.66927,
+     68.50615
+    ],
+    [
+     42.66603,
+     68.4851
+    ],
+    [
+     42.6816,
+     68.47069
+    ],
+    [
+     42.70426,
+     68.46112
+    ],
+    [
+     42.70959,
+     68.43549
+    ],
+    [
+     42.74064,
+     68.4151
+    ],
+    [
+     42.73783,
+     68.40373
+    ],
+    [
+     42.76741,
+     68.39161
+    ],
+    [
+     42.7857,
+     68.39415
+    ],
+    [
+     42.78461,
+     68.38127
+    ],
+    [
+     42.77777,
+     68.35139
+    ],
+    [
+     42.78809,
+     68.27927
+    ],
+    [
+     42.78584,
+     68.23724
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_4_update Inflow_after_use",
+   "coords": [
+    [
+     42.76666,
+     68.11293
+    ],
+    [
+     42.75992,
+     68.21966
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_5_update Inflow_after_use",
+   "coords": [
+    [
+     44.66675,
+     65.58351
+    ],
+    [
+     44.71654,
+     65.77437
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_4_update Inflow_after_shardara",
+   "coords": [
+    [
+     41.4044,
+     67.97714
+    ],
+    [
+     41.39597,
+     67.98327
+    ],
+    [
+     41.35514,
+     68.00682
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_6_update Inflow_after_use",
+   "coords": [
+    [
+     46.22393,
+     61.7315
+    ],
+    [
+     46.14752,
+     61.65986
+    ],
+    [
+     46.08851,
+     61.60916
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_3_update Inflow_after_use",
+   "coords": [
+    [
+     43.20896,
+     67.66902
+    ],
+    [
+     43.26057,
+     67.81605
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Rivers",
+   "description": ""
+  }
+ ],
+ "channels": [
+  {
+   "name": "Dostyk",
+   "coords": [
+    [
+     41.14065,
+     68.2391
+    ],
+    [
+     41.06253,
+     68.23405
+    ],
+    [
+     41.0124,
+     68.25228
+    ],
+    [
+     40.98202,
+     68.27203
+    ],
+    [
+     40.93427,
+     68.2949
+    ],
+    [
+     40.89456,
+     68.31243
+    ],
+    [
+     40.81471,
+     68.34125
+    ],
+    [
+     40.7926,
+     68.34906
+    ],
+    [
+     40.76377,
+     68.36722
+    ],
+    [
+     40.73586,
+     68.38609
+    ],
+    [
+     40.73428,
+     68.38451
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "BKMK",
+   "coords": [
+    [
+     41.14065,
+     68.2391
+    ],
+    [
+     41.16287,
+     68.44243
+    ],
+    [
+     41.16453,
+     68.51077
+    ],
+    [
+     41.17287,
+     68.55578
+    ],
+    [
+     41.23763,
+     68.69445
+    ],
+    [
+     41.32359,
+     68.72703
+    ],
+    [
+     41.36306,
+     68.75261
+    ],
+    [
+     41.40317,
+     68.77124
+    ],
+    [
+     41.46229,
+     68.78947
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "Kyzylkum",
+   "coords": [
+    [
+     41.14065,
+     68.2391
+    ],
+    [
+     41.17342,
+     68.05467
+    ],
+    [
+     41.22723,
+     67.95891
+    ],
+    [
+     41.2491,
+     67.92625
+    ],
+    [
+     41.29738,
+     67.92623
+    ],
+    [
+     41.41514,
+     67.92884
+    ],
+    [
+     41.61008,
+     67.91968
+    ],
+    [
+     41.64017,
+     67.9223
+    ],
+    [
+     41.81581,
+     67.91059
+    ],
+    [
+     41.8995,
+     67.87816
+    ],
+    [
+     41.92437,
+     67.86987
+    ],
+    [
+     41.94648,
+     67.86987
+    ],
+    [
+     41.97135,
+     67.86434
+    ],
+    [
+     42.02663,
+     67.8671
+    ],
+    [
+     42.1206,
+     67.90303
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "empty_flow2_to_update_flow_4",
+   "coords": [
+    [
+     41.29723,
+     67.97983
+    ],
+    [
+     41.35616,
+     68.11857
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_04",
+   "coords": [
+    [
+     42.71989,
+     68.21299
+    ],
+    [
+     42.69863,
+     68.14659
+    ],
+    [
+     42.69128,
+     68.12034
+    ],
+    [
+     42.65977,
+     68.09618
+    ],
+    [
+     42.64379,
+     68.0874
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_5",
+   "coords": [
+    [
+     44.69463,
+     65.81306
+    ],
+    [
+     44.64627,
+     65.71414
+    ],
+    [
+     44.63095,
+     65.65565
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_6",
+   "coords": [
+    [
+     46.06004,
+     61.65743
+    ],
+    [
+     45.97825,
+     61.60869
+    ],
+    [
+     45.95393,
+     61.57356
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  },
+  {
+   "name": "empty_flow3",
+   "coords": [
+    [
+     43.22816,
+     67.84596
+    ],
+    [
+     43.1877,
+     67.76975
+    ],
+    [
+     43.17939,
+     67.73187
+    ],
+    [
+     43.16922,
+     67.68658
+    ],
+    [
+     43.16737,
+     67.63391
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Diversions",
+   "description": ""
+  }
+ ],
+ "eflow_requirements": [
+  {
+   "name": "EFLOW_SYRDARYA_AFTER_SHARDARA",
+   "lat": 41.19412,
+   "lon": 68.01851,
+   "folder": "WEAP Dataset: Syrdarys / Flow Requirements",
+   "description": ""
+  },
+  {
+   "name": "EFLOW_SYRDARYA_BEFORE_SHARDARA",
+   "lat": 41.04509,
+   "lon": 68.58144,
+   "folder": "WEAP Dataset: Syrdarys / Flow Requirements",
+   "description": ""
+  },
+  {
+   "name": "EFLOW_SYRDARYA_KOKTUBE",
+   "lat": 43.08421,
+   "lon": 67.99051,
+   "folder": "WEAP Dataset: Syrdarys / Flow Requirements",
+   "description": ""
+  },
+  {
+   "name": "EFLOW_ARYS_SHAULDER_",
+   "lat": 42.70959,
+   "lon": 68.43549,
+   "folder": "WEAP Dataset: Syrdarys / Flow Requirements",
+   "description": ""
+  }
+ ],
+ "gauges": [
+  {
+   "name": "SYRDARYA_AFTER_SHARDARA",
+   "lat": 41.45354,
+   "lon": 68.06683,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "SYRDARYA_BEFORE_SHARDARA",
+   "lat": 41.08594,
+   "lon": 68.51978,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "SYRDARYA_KAZALY",
+   "lat": 46.04101,
+   "lon": 61.74491,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "SYRDARYA_KOKTUBE",
+   "lat": 43.11487,
+   "lon": 67.90992,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "SYRDARYA_RZD_KERKELMES",
+   "lat": 44.61991,
+   "lon": 65.93227,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "outflow_shardara_data",
+   "lat": 41.1559,
+   "lon": 68.09056,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "KELES_USTYE",
+   "lat": 41.12585,
+   "lon": 68.7516,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  },
+  {
+   "name": "ARYS_SHAULDER",
+   "lat": 42.77777,
+   "lon": 68.35139,
+   "folder": "WEAP Dataset: Syrdarys / Streamflow Gauges",
+   "description": ""
+  }
+ ],
+ "reservoirs": [
+  {
+   "name": "SHARDARA",
+   "lat": 41.14065,
+   "lon": 68.2391,
+   "folder": "WEAP Dataset: Syrdarys / Reservoirs",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_Syrdarya_flow_4_update Inflow_after_shardara Inflow_after_shardara",
+   "lat": 41.35514,
+   "lon": 68.00682,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  }
+ ],
+ "groundwater": [
+  {
+   "name": "GW_Aral_01.00.01.06",
+   "lat": 46.40245,
+   "lon": 62.80454,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  },
+  {
+   "name": "GW_Arys_01.00.01.03",
+   "lat": 43.66425,
+   "lon": 68.49745,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  },
+  {
+   "name": "GW_BKMK_01.00.01.02",
+   "lat": 41.77356,
+   "lon": 68.84641,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  },
+  {
+   "name": "GW_Dostyk_01.00.01.01",
+   "lat": 40.60542,
+   "lon": 68.57084,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  },
+  {
+   "name": "GW_Kyzylkum_01.00.01.04",
+   "lat": 42.28524,
+   "lon": 67.4104,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  },
+  {
+   "name": "GW_Kyzylorda_01.00.01.05",
+   "lat": 44.75466,
+   "lon": 66.78811,
+   "folder": "WEAP Dataset: Syrdarys / Groundwater",
+   "description": ""
+  }
+ ],
+ "transmission_links": [
+  {
+   "name": "Transmission Link from GW_Aral_01.00.01.06 to Domestic_Aral_01.00.01.06",
+   "coords": [
+    [
+     46.40245,
+     62.80454
+    ],
+    [
+     46.23979,
+     62.40485
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Aral_01.00.01.06 to Industrial_use_Aral_01.00.01.06",
+   "coords": [
+    [
+     46.40245,
+     62.80454
+    ],
+    [
+     46.03505,
+     63.3888
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Arys_01.00.01.03 to Agriculture_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.66425,
+     68.49745
+    ],
+    [
+     43.45772,
+     68.79854
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Arys_01.00.01.03 to Domestic_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.66425,
+     68.49745
+    ],
+    [
+     43.34574,
+     68.73633
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Arys_01.00.01.03 to Green_landscape_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.66425,
+     68.49745
+    ],
+    [
+     43.12277,
+     68.60965
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Arys_01.00.01.03 to Industrial_use_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.66425,
+     68.49745
+    ],
+    [
+     43.58711,
+     68.84084
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_BKMK_01.00.01.02 to Domestic_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.77356,
+     68.84641
+    ],
+    [
+     41.59475,
+     68.89509
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_BKMK_01.00.01.02 to Industrial_use_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.77356,
+     68.84641
+    ],
+    [
+     41.82824,
+     69.17538
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Dostyk_01.00.01.01 to Domestic_Dostyk_01.00.01.01",
+   "coords": [
+    [
+     40.60542,
+     68.57084
+    ],
+    [
+     40.74776,
+     68.51978
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Kyzylkum_01.00.01.04 to Agriculture_Kyzylkum_01.00.01.",
+   "coords": [
+    [
+     42.28524,
+     67.4104
+    ],
+    [
+     42.19183,
+     68.01304
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Kyzylkum_01.00.01.04 to Domestic_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     42.28524,
+     67.4104
+    ],
+    [
+     42.34249,
+     67.89252
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Kyzylkum_01.00.01.04 to Industrial_use_Kyzylkum_01.00.",
+   "coords": [
+    [
+     42.28524,
+     67.4104
+    ],
+    [
+     42.47809,
+     67.76295
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Kyzylorda_01.00.01.05 to Domestic_Kyzylorda_01.00.01.0",
+   "coords": [
+    [
+     44.75466,
+     66.78811
+    ],
+    [
+     44.54396,
+     66.70553
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from GW_Kyzylorda_01.00.01.05 to Industrial_use_Kyzylorda_01.0",
+   "coords": [
+    [
+     44.75466,
+     66.78811
+    ],
+    [
+     44.79792,
+     66.39623
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 1 to Agriculture_Dostyk_01.00.01.01",
+   "coords": [
+    [
+     40.81471,
+     68.34125
+    ],
+    [
+     40.80097,
+     68.1713
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 10 to Domestic_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.45486,
+     69.12514
+    ],
+    [
+     41.59475,
+     68.89509
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 11 to Other_use_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     42.52498,
+     68.22438
+    ],
+    [
+     42.66792,
+     67.6605
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 12 to Domestic_Dostyk_01.00.01.01",
+   "coords": [
+    [
+     41.08941,
+     68.43607
+    ],
+    [
+     40.74776,
+     68.51978
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 13 to Industrial_use_Kyzylorda_01.00.01.0",
+   "coords": [
+    [
+     44.50978,
+     66.03866
+    ],
+    [
+     44.79792,
+     66.39623
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 14 to Agriculture_Kyzylorda_01.00.01.05",
+   "coords": [
+    [
+     44.65727,
+     65.88779
+    ],
+    [
+     44.98715,
+     66.31895
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 15 to Domestic_Kyzylorda_01.00.01.05",
+   "coords": [
+    [
+     44.34209,
+     66.26593
+    ],
+    [
+     44.54396,
+     66.70553
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 16 to Green_landscape_Kyzylorda_01.00.01.",
+   "coords": [
+    [
+     44.14681,
+     66.48499
+    ],
+    [
+     44.31931,
+     66.99529
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 17 to Green_landscape_Aral_01.00.01.06",
+   "coords": [
+    [
+     45.59285,
+     63.86512
+    ],
+    [
+     46.07112,
+     64.07944
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 18 to Agriculture_Aral_01.00.01.06",
+   "coords": [
+    [
+     45.47849,
+     64.04403
+    ],
+    [
+     45.73017,
+     64.17225
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 19 to Industrial_use_Aral_01.00.01.06",
+   "coords": [
+    [
+     45.68584,
+     63.3507
+    ],
+    [
+     46.03505,
+     63.3888
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 2 to Agriculture_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     41.8995,
+     67.87816
+    ],
+    [
+     41.95754,
+     67.91685
+    ],
+    [
+     42.19183,
+     68.01304
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 20 to Fish_farming_Aral_01.00.01.06",
+   "coords": [
+    [
+     45.78628,
+     62.5375
+    ],
+    [
+     46.07282,
+     62.61158
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 21 to Domestic_Aral_01.00.01.06",
+   "coords": [
+    [
+     45.76036,
+     62.01912
+    ],
+    [
+     46.23979,
+     62.40485
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 22 to Other_use_Aral_01.00.01.06",
+   "coords": [
+    [
+     46.00114,
+     61.82366
+    ],
+    [
+     46.35111,
+     62.14843
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 23 to INFLOW_TO_ARAL",
+   "coords": [
+    [
+     46.20709,
+     60.62076
+    ],
+    [
+     46.22795,
+     60.34959
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 24 to Other_use_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.54489,
+     68.98552
+    ],
+    [
+     42.84848,
+     68.63832
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 25 to Paddy_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.59092,
+     69.13219
+    ],
+    [
+     42.99455,
+     68.55896
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 26 to Green_landscape_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.60222,
+     69.22556
+    ],
+    [
+     43.12277,
+     68.60965
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 27 to Fish_farming_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.61766,
+     69.33891
+    ],
+    [
+     43.20888,
+     68.73882
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 28 to Agriculture_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.62584,
+     69.57588
+    ],
+    [
+     43.45772,
+     68.79854
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 29 to Agriculture_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.1766,
+     67.87442
+    ],
+    [
+     43.45772,
+     68.79854
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 3 to Agriculture_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     41.83939,
+     68.09333
+    ],
+    [
+     42.19183,
+     68.01304
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 30 to Domestic_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.6132,
+     69.44004
+    ],
+    [
+     43.34574,
+     68.73633
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 32 to Fish_farming_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.97507,
+     68.06473
+    ],
+    [
+     43.20888,
+     68.73882
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 33 to Paddy_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.90493,
+     68.15218
+    ],
+    [
+     42.99455,
+     68.55896
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 34 to delta_aral_evap",
+   "coords": [
+    [
+     46.06601,
+     61.02175
+    ],
+    [
+     46.15998,
+     61.07631
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 35 to Other_use_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.86457,
+     68.1802
+    ],
+    [
+     42.84848,
+     68.63832
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 36 to Domestic_Arys_01.00.01.03",
+   "coords": [
+    [
+     43.02683,
+     68.0539
+    ],
+    [
+     43.34574,
+     68.73633
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 37 to Green_landscape_Arys_01.00.01.03",
+   "coords": [
+    [
+     42.93534,
+     68.09964
+    ],
+    [
+     43.12277,
+     68.60965
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 4 to Industrial_use_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     42.43772,
+     68.26428
+    ],
+    [
+     42.47809,
+     67.76295
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 5 to Domestic_Kyzylkum_01.00.01.04",
+   "coords": [
+    [
+     42.27266,
+     68.26428
+    ],
+    [
+     42.34249,
+     67.89252
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 6 to Agriculture_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.23763,
+     68.69445
+    ],
+    [
+     41.44353,
+     68.89143
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 7 to Agriculture_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.25645,
+     68.86858
+    ],
+    [
+     41.44353,
+     68.89143
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 8 to Other_use_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.57565,
+     69.325
+    ],
+    [
+     41.9061,
+     69.48223
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  },
+  {
+   "name": "Transmission Link from Withdrawal Node 9 to Industrial_use_BKMK_01.00.01.02",
+   "coords": [
+    [
+     41.50469,
+     69.23358
+    ],
+    [
+     41.59451,
+     69.20949
+    ],
+    [
+     41.82824,
+     69.17538
+    ]
+   ],
+   "folder": "WEAP Dataset: Syrdarys / Transmission Links",
+   "description": ""
+  }
+ ],
+ "withdrawals": [
+  {
+   "name": "Withdrawal Node 11",
+   "lat": 42.52498,
+   "lon": 68.22438,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 12",
+   "lat": 41.08941,
+   "lon": 68.43607,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 13",
+   "lat": 44.50978,
+   "lon": 66.03866,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 14",
+   "lat": 44.65727,
+   "lon": 65.88779,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 15",
+   "lat": 44.34209,
+   "lon": 66.26593,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 16",
+   "lat": 44.14681,
+   "lon": 66.48499,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 17",
+   "lat": 45.59285,
+   "lon": 63.86512,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 18",
+   "lat": 45.47849,
+   "lon": 64.04403,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 19",
+   "lat": 45.68584,
+   "lon": 63.3507,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 20",
+   "lat": 45.78628,
+   "lon": 62.5375,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 21",
+   "lat": 45.76036,
+   "lon": 62.01912,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 22",
+   "lat": 46.00114,
+   "lon": 61.82366,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 23",
+   "lat": 46.20709,
+   "lon": 60.62076,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 29",
+   "lat": 43.1766,
+   "lon": 67.87442,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 3",
+   "lat": 41.83939,
+   "lon": 68.09333,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 32",
+   "lat": 42.97507,
+   "lon": 68.06473,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 33",
+   "lat": 42.90493,
+   "lon": 68.15218,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 34",
+   "lat": 46.06601,
+   "lon": 61.02175,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 35",
+   "lat": 42.86457,
+   "lon": 68.1802,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 36",
+   "lat": 43.02683,
+   "lon": 68.0539,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 37",
+   "lat": 42.93534,
+   "lon": 68.09964,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 4",
+   "lat": 42.43772,
+   "lon": 68.26428,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 5",
+   "lat": 42.27266,
+   "lon": 68.26428,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 10",
+   "lat": 41.45486,
+   "lon": 69.12514,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 7",
+   "lat": 41.25645,
+   "lon": 68.86858,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 8",
+   "lat": 41.57565,
+   "lon": 69.325,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 9",
+   "lat": 41.50469,
+   "lon": 69.23358,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 24",
+   "lat": 42.54489,
+   "lon": 68.98552,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 25",
+   "lat": 42.59092,
+   "lon": 69.13219,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 26",
+   "lat": 42.60222,
+   "lon": 69.22556,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 27",
+   "lat": 42.61766,
+   "lon": 69.33891,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 28",
+   "lat": 42.62584,
+   "lon": 69.57588,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 30",
+   "lat": 42.6132,
+   "lon": 69.44004,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 1",
+   "lat": 40.81471,
+   "lon": 68.34125,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 6",
+   "lat": 41.23763,
+   "lon": 68.69445,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "Withdrawal Node 2",
+   "lat": 41.8995,
+   "lon": 67.87816,
+   "folder": "WEAP Dataset: Syrdarys / River Withdrawals",
+   "description": ""
+  },
+  {
+   "name": "empty_flow2_to_update_flow_4 Outflow",
+   "lat": 41.29723,
+   "lon": 67.97983,
+   "folder": "WEAP Dataset: Syrdarys / Diversion Outflows",
+   "description": ""
+  },
+  {
+   "name": "empty_flow3 Outflow",
+   "lat": 43.22816,
+   "lon": 67.84596,
+   "folder": "WEAP Dataset: Syrdarys / Diversion Outflows",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_04 Outflow",
+   "lat": 42.71989,
+   "lon": 68.21299,
+   "folder": "WEAP Dataset: Syrdarys / Diversion Outflows",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_5 Outflow",
+   "lat": 44.69463,
+   "lon": 65.81306,
+   "folder": "WEAP Dataset: Syrdarys / Diversion Outflows",
+   "description": ""
+  },
+  {
+   "name": "empty_flow_6 Outflow",
+   "lat": 46.06004,
+   "lon": 61.65743,
+   "folder": "WEAP Dataset: Syrdarys / Diversion Outflows",
+   "description": ""
+  }
+ ],
+ "other_points": [
+  {
+   "name": "Arys Inflow",
+   "lat": 42.78584,
+   "lon": 68.23724,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  },
+  {
+   "name": "Keles Inflow",
+   "lat": 41.00085,
+   "lon": 68.65669,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_3_update Inflow_after_use Inflow",
+   "lat": 43.26057,
+   "lon": 67.81605,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_4_update Inflow_after_use Inflow",
+   "lat": 42.75992,
+   "lon": 68.21966,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_5_update Inflow_after_use Inflow",
+   "lat": 44.71654,
+   "lon": 65.77437,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  },
+  {
+   "name": "Syrdarya_flow_6_update Inflow_after_use Inflow",
+   "lat": 46.08851,
+   "lon": 61.60916,
+   "folder": "WEAP Dataset: Syrdarys / Tributary Inflows",
+   "description": ""
+  }
+ ],
+ "wastewater": [],
+ "catchments": [],
+ "other_lines": []
+}

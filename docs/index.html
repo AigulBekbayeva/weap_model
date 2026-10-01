@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEAP Syrdarya — Map &amp; Charts</title>
+
+<link rel="stylesheet" href="lib/leaflet.css" />
+<script src="lib/leaflet.js"></script>
+<script src="lib/chart.umd.js"></script>
+<script>
+if (typeof L === 'undefined') {
+    document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">');
+    document.write('<scr'+'ipt src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"><\/scr'+'ipt>');
+}
+</script>
+<script>
+if (typeof Chart === 'undefined') {
+    document.write('<scr'+'ipt src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/scr'+'ipt>');
+}
+</script>
+
+<style>
+:root {
+  color-scheme: light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --hair:rgba(11,11,11,.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  --ok:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-1:#1a1a19; --plane:#0d0d0d;
+    --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,.10);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,.10);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+       background:var(--plane); color:var(--ink); height:100vh; overflow:hidden; }
+.app { display:flex; height:100vh; }
+
+/* ---------- Sidebar ---------- */
+.side { width:250px; flex:none; background:var(--surface-1);
+        border-right:1px solid var(--hair); overflow-y:auto; z-index:1000; }
+.brand { padding:13px 14px; border-bottom:1px solid var(--hair);
+         display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.brand h1 { font-size:14px; font-weight:650; letter-spacing:-.01em; }
+.brand p { font-size:10px; color:var(--muted); margin-top:2px; }
+.theme-btn { border:1px solid var(--hair); background:none; color:var(--ink-2);
+             border-radius:6px; padding:4px 7px; cursor:pointer; font-size:12px; flex:none; }
+.theme-btn:hover { background:var(--plane); }
+.side .inner { padding:12px 14px 24px; }
+.grp { margin-bottom:16px; }
+.grp h2 { font-size:9.5px; font-weight:650; color:var(--muted);
+          text-transform:uppercase; letter-spacing:.07em; margin-bottom:7px; }
+.row { display:flex; align-items:center; gap:7px; padding:4px 5px;
+       border-radius:5px; cursor:pointer; font-size:11.5px; }
+.row:hover { background:var(--plane); }
+.row input { width:13px; height:13px; accent-color:var(--s1); flex:none; cursor:pointer; }
+.row label { flex:1; cursor:pointer; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.row .n { color:var(--muted); font-size:10px; font-variant-numeric:tabular-nums; }
+.dot { width:9px; height:9px; border-radius:50%; flex:none; }
+.bar { width:15px; height:2.5px; border-radius:1px; flex:none; }
+.note { font-size:10.5px; color:var(--muted); line-height:1.5; padding:2px 5px; }
+.credit { margin-top:20px; padding-top:12px; border-top:1px solid var(--hair);
+          font-size:10px; color:var(--muted); line-height:1.6; }
+.credit a { color:var(--s1); text-decoration:none; }
+.credit a:hover { text-decoration:underline; }
+.banner { font-size:10.5px; line-height:1.5; padding:9px 10px; border-radius:7px;
+          margin-bottom:14px; border-left:3px solid; }
+.banner.ok   { background:color-mix(in srgb, var(--ok) 9%, transparent);  border-color:var(--ok); }
+.banner.warn { background:color-mix(in srgb, var(--warn) 14%, transparent); border-color:var(--warn); }
+.banner code { font-size:10px; background:var(--plane); padding:1px 4px; border-radius:3px; }
+
+/* ---------- Main area ---------- */
+.main { flex:1; display:flex; flex-direction:column; min-width:0; }
+#map { flex:1; min-height:150px; background:var(--plane); }
+
+/* ---------- Chart panel ---------- */
+.charts { height:46%; min-height:210px; background:var(--surface-1);
+          border-top:1px solid var(--hair); display:flex; flex-direction:column; }
+.charts.collapsed { height:41px; min-height:41px; }
+.charts.collapsed .cbody, .charts.collapsed .filters { display:none; }
+
+.tabs { display:flex; align-items:center; gap:2px; padding:5px 10px;
+        border-bottom:1px solid var(--hair); overflow-x:auto; flex:none; }
+.tab { border:none; background:none; color:var(--ink-2); font:inherit; font-size:11.5px;
+       padding:6px 11px; border-radius:6px; cursor:pointer; white-space:nowrap; }
+.tab:hover { background:var(--plane); }
+.tab[aria-selected="true"] { background:var(--plane); color:var(--ink); font-weight:600;
+                             box-shadow:inset 0 -2px 0 var(--s1); }
+.spacer { flex:1; }
+.icon-btn { border:1px solid var(--hair); background:none; color:var(--ink-2);
+            border-radius:6px; padding:4px 9px; cursor:pointer; font-size:11px; flex:none; }
+.icon-btn:hover { background:var(--plane); }
+.icon-btn[aria-pressed="true"] { background:var(--plane); color:var(--ink); font-weight:600; }
+
+/* filters: one row above every chart */
+.filters { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+           padding:7px 12px; border-bottom:1px solid var(--hair); flex:none; }
+.filters .f { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--ink-2); }
+.filters select { font:inherit; font-size:11px; padding:3px 6px; border-radius:5px;
+                  border:1px solid var(--hair); background:var(--surface-1); color:var(--ink); }
+.seg { display:inline-flex; border:1px solid var(--hair); border-radius:6px; overflow:hidden; }
+.seg button { border:none; background:none; font:inherit; font-size:11px; padding:3px 9px;
+              cursor:pointer; color:var(--ink-2); }
+.seg button[aria-pressed="true"] { background:var(--s1); color:#fff; font-weight:600; }
+
+.cbody { flex:1; overflow-y:auto; padding:12px; }
+.grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:12px; }
+.card { border:1px solid var(--hair); border-radius:9px; padding:11px 13px 13px;
+        background:var(--surface-1); display:flex; flex-direction:column; }
+.card h3 { font-size:12px; font-weight:600; margin-bottom:1px; }
+.card .sub { font-size:10px; color:var(--muted); margin-bottom:9px; }
+.plot { position:relative; height:190px; }
+.empty { color:var(--muted); font-size:12px; text-align:center;
+         padding:34px 18px; line-height:1.6; }
+.hint { font-size:10.5px; color:var(--muted); line-height:1.5; margin-bottom:11px; }
+.objgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:11px; }
+.objcol { border:1px solid var(--hair); border-radius:9px; padding:9px 7px 8px; }
+.objcol h4 { font-size:10px; font-weight:650; color:var(--muted); text-transform:uppercase;
+             letter-spacing:.06em; padding:0 5px 6px; }
+.objcol h4 span { text-transform:none; letter-spacing:0; font-weight:400; }
+.objitem { display:flex; align-items:center; gap:6px; width:100%; text-align:left;
+           border:none; background:none; font:inherit; font-size:11px; color:var(--ink);
+           padding:4px 6px; border-radius:5px; cursor:pointer; }
+.objitem:hover { background:var(--plane); }
+.objitem .pin { color:var(--s1); font-size:9px; flex:none; }
+.objitem.nomap { color:var(--ink-2); }
+.objitem.nomap .pin { color:var(--muted); }
+
+/* stat tiles */
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+         gap:10px; margin-bottom:12px; }
+.tile { border:1px solid var(--hair); border-radius:9px; padding:10px 12px; }
+.tile .k { font-size:10px; color:var(--muted); margin-bottom:3px; }
+.tile .v { font-size:22px; font-weight:600; letter-spacing:-.02em; line-height:1.15; }
+.tile .u { font-size:11px; color:var(--ink-2); font-weight:400; margin-left:2px; }
+
+/* table view */
+table.tv { width:100%; border-collapse:collapse; font-size:11px;
+           font-variant-numeric:tabular-nums; }
+table.tv th, table.tv td { padding:4px 8px; border-bottom:1px solid var(--hair);
+                           text-align:right; white-space:nowrap; }
+table.tv th:first-child, table.tv td:first-child { text-align:left;
+                           font-variant-numeric:normal; position:sticky; left:0;
+                           background:var(--surface-1); }
+table.tv thead th { color:var(--muted); font-weight:600;
+                    position:sticky; top:0; background:var(--surface-1); }
+.tvwrap { overflow:auto; max-height:100%; }
+
+.leaflet-popup-content { font:12px system-ui,-apple-system,"Segoe UI",sans-serif; margin:9px 11px; }
+.leaflet-popup-content b { font-size:12.5px; }
+.pbtn { margin-top:7px; border:1px solid var(--hair); background:var(--plane);
+        border-radius:5px; padding:4px 9px; font:inherit; font-size:11px; cursor:pointer; }
+
+@media (max-width:820px){
+  .app { flex-direction:column; }
+  .side { width:100%; max-height:33vh; border-right:none; border-bottom:1px solid var(--hair); }
+  .charts { height:47%; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div>
+        <h1>WEAP Syrdarya</h1>
+        <p id="gen">Map &amp; charts</p>
+      </div>
+      <button class="theme-btn" id="themeBtn" title="Light / dark theme">◐</button>
+    </div>
+    <div class="inner">
+      <div id="banner" class="banner warn">Loading…</div>
+      <div class="grp"><h2>Zones</h2><div id="gZones"></div></div>
+      <div class="grp"><h2>Lines</h2><div id="gLines"></div></div>
+      <div class="grp"><h2>Points</h2><div id="gPoints"></div></div>
+      <div class="grp"><h2>Datasets</h2><div id="gData"></div></div>
+      <p class="credit">Developed by A. Bekbayeva · <a
+        href="https://www.linkedin.com/in/aigulbekbayeva/"
+        target="_blank" rel="noopener">LinkedIn</a></p>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div id="map"></div>
+
+    <section class="charts" id="charts">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="object"    aria-selected="true">Object</button>
+        <button class="tab" role="tab" data-tab="gauges"    aria-selected="false">Gauges</button>
+        <button class="tab" role="tab" data-tab="reservoir" aria-selected="false">Reservoir</button>
+        <button class="tab" role="tab" data-tab="demand"    aria-selected="false">Demand</button>
+        <button class="tab" role="tab" data-tab="rivers"    aria-selected="false">Rivers &amp; e-flow</button>
+        <span class="spacer"></span>
+        <button class="icon-btn" id="tableBtn" aria-pressed="false" title="Show values as a table">Table</button>
+        <button class="icon-btn" id="collapseBtn" title="Collapse panel">▾</button>
+      </div>
+
+      <div class="filters">
+        <div class="f"><span>Period</span>
+          <select id="fFrom"></select><span>—</span><select id="fTo"></select>
+        </div>
+        <div class="f"><span>Step</span>
+          <span class="seg" id="fRes">
+            <button data-res="monthly" aria-pressed="true">Month</button>
+            <button data-res="annual"  aria-pressed="false">Year</button>
+          </span>
+        </div>
+        <div class="f" id="selInfo" style="color:var(--muted)"></div>
+      </div>
+
+      <div class="cbody" id="cbody"></div>
+    </section>
+  </div>
+</div>
+
+<script src="weap-data.js"></script>
+<script>
+"use strict";
+
+/* ============ PALETTE (validated with the dataviz checker) ============ */
+const SLOTS = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* Colour comes from the slot index within a chart. Series order is ranked over the
+   WHOLE period, not the selected one, so changing the filter never repaints series. */
+const slotColor = i => cssv(SLOTS[i % 8]);
+
+/* ============ MAP LAYER STYLES ============ */
+const LAYER_STYLE = {
+  rivers:             {kind:'line', color:'--s1', w:2.5, label:'Rivers'},
+  channels:           {kind:'line', color:'--s2', w:2,  dash:[6,4], label:'Canals'},
+  transmission_links: {kind:'line', color:'--s7', w:1.5,dash:[3,3], label:'Transmission links'},
+  other_lines:        {kind:'line', color:'--muted', w:1.5, label:'Other lines'},
+  reservoirs:         {kind:'pt', color:'--s1', r:10, label:'Reservoirs'},
+  demand_sites:       {kind:'pt', color:'--s8', r:5.5,label:'Demand sites'},
+  gauges:             {kind:'pt', color:'--s3', r:7,  label:'Streamflow gauges'},
+  eflow_requirements: {kind:'pt', color:'--s6', r:6,  label:'E-flow requirements'},
+  groundwater:        {kind:'pt', color:'--s4', r:6,  label:'Groundwater'},
+  withdrawals:        {kind:'pt', color:'--s5', r:4.5,label:'River withdrawals'},
+  wastewater:         {kind:'pt', color:'--s2', r:5,  label:'Wastewater'},
+  catchments:         {kind:'pt', color:'--s4', r:5,  label:'Catchments'},
+  other_points:       {kind:'pt', color:'--s7', r:4.5,label:'Other points'}
+};
+const LINE_KEYS = ['rivers','channels','transmission_links','other_lines'];
+const PT_KEYS   = ['reservoirs','demand_sites','gauges','eflow_requirements',
+                   'groundwater','withdrawals','wastewater','catchments','other_points'];
+
+/* ============ DATASET LABELS ============ */
+/* The Python scripts write labels and units in Russian. Dataset codes are stable,
+   so the page relabels them here — no need to rebuild the data. */
+const DS_LABELS = {
+  demand_consumption:    'Water demand',
+  unmet_demand:          'Unmet demand',
+  coverage:              'Demand coverage',
+  supply_delivered:      'Supply delivered',
+  groundwater_volume:    'Groundwater storage',
+  river_headflow:        'River headflow',
+  canal_diversion:       'Canal diversion share',
+  reservoir_volume:      'Reservoir storage',
+  reservoir_inflow:      'Reservoir inflow',
+  reservoir_outflow:     'Reservoir release',
+  reservoir_evaporation: 'Evaporation',
+  eflow_requirement:     'E-flow requirement',
+  gauge_modeled:         'Modelled streamflow',
+  gauge_observed:        'Observed streamflow',
+  link_flow:             'Transmission link flow',
+};
+const UNIT_LABELS = {
+  'млн м³':'MCM', 'млн м3':'MCM', 'млн.м³':'MCM',
+  'м³/с':'m³/s', 'м3/с':'m³/s', 'м³/сек':'m³/s',
+  'мм':'mm',
+};
+/* units that belong to one dataset regardless of what the build wrote */
+const DS_UNITS = {
+  reservoir_evaporation: 'mm',       /* evaporation depth, not a volume */
+};
+function localizeDatasets(){
+  for(const [code,ds] of Object.entries(D?.data||{})){
+    if(DS_LABELS[code]) ds.label = DS_LABELS[code];
+    if(UNIT_LABELS[ds.unit]) ds.unit = UNIT_LABELS[ds.unit];
+    if(DS_UNITS[code])  ds.unit = DS_UNITS[code];
+  }
+}
+
+/* ============ STATE ============ */
+const S = {
+  tab:'object', selected:null, tableView:false,
+  res:'monthly', from:null, to:null,
+  times:[], charts:[], mapLayers:{}, markerIndex:new Map()
+};
+const D = (typeof WEAP_DATA!=='undefined') ? WEAP_DATA : null;
+
+/* ============ HELPERS ============ */
+const norm = s => String(s||'').toLowerCase().replace(/[\s_\-.]/g,'');
+const fmt = (v,d=2) => v==null||isNaN(v) ? '—'
+      : Math.abs(v)>=1000 ? v.toLocaleString('en-US',{maximumFractionDigits:0})
+      : v.toLocaleString('en-US',{maximumFractionDigits:d});
+
+/* mean for rates and percentages, sum for volumes */
+const isRate = unit => /m³\/s|м³\/с|%/i.test(unit||'');
+
+function allTimes(){
+  const s = new Set();
+  for(const d of Object.values(D?.data||{})) (d.times||[]).forEach(t=>{ if(t!=='const') s.add(t); });
+  return [...s].sort();
+}
+const yearOf = t => parseInt(String(t).slice(0,4),10);
+
+/* Reshapes a series to the selected step and period */
+function shape(points, unit){
+  if(!points) return null;
+  const inRange = t => { const y=yearOf(t); return !(S.from&&y<S.from) && !(S.to&&y>S.to); };
+  if(S.res==='annual'){
+    const acc={};
+    for(const [t,v] of Object.entries(points)){
+      if(t==='const'||!inRange(t)) continue;
+      const y=yearOf(t); (acc[y]=acc[y]||[]).push(v);
+    }
+    const out={};
+    for(const y of Object.keys(acc).sort()){
+      const a=acc[y];
+      out[y] = isRate(unit) ? a.reduce((x,b)=>x+b,0)/a.length : a.reduce((x,b)=>x+b,0);
+    }
+    return out;
+  }
+  const out={};
+  for(const t of Object.keys(points).sort()){
+    if(t==='const'||!inRange(t)) continue;
+    out[t]=points[t];
+  }
+  return out;
+}
+
+/* --- WEAP key: zone code + category -------------------------------------
+   The KMZ calls a node "DOMESTIC_01.00.01.05" while the results export calls it
+   "Domestic_Kyzylorda_(01.00.01.05)". All they share is the zone code and the
+   category, so those are what we match on. Russian spellings stay in the
+   patterns below so Russian-named exports keep working. */
+const CATS = [
+  [/green.?landscape|landscape|ландшафт/i, 'LAND'],
+  [/fish|рыб/i,                            'FISH'],
+  [/industr|промышл/i,                     'IND'],
+  [/domestic|комбыт|бытов/i,               'DOM'],
+  [/agricultur|сельхоз|орошен/i,           'AGR'],
+  [/paddy|рис/i,                           'PADDY'],
+  [/nalivn|наливн/i,                       'NAL'],
+  [/groundwater|^gw[_\-\s]|подзем/i,       'GW'],
+  [/eflow|flow.?req|экосток/i,             'EFLOW'],
+  [/other|прочи/i,                         'OTH'],
+];
+function weapKey(name){
+  const s = String(name||'');
+  const code = s.match(/\d{2}\.\d{2}\.\d{2}\.\d{2}/);
+  if(!code) return null;
+  for(const [re,tag] of CATS) if(re.test(s)) return tag+'|'+code[0];
+  return null;                      /* code found, category not recognised */
+}
+
+/* Finds a series by object name.
+   1) exact match
+   2) ignoring case and separators
+   3) WEAP zone code + category
+   4) a SINGLE partial match
+   Ambiguous partial matches are discarded, otherwise the canal "BKMK" would
+   attach itself to the demand site "AgricultureBKMK". */
+function seriesFor(dsCode, name){
+  const ds = D?.data?.[dsCode]; if(!ds) return null;
+  if(ds.series[name]) return ds.series[name];
+  const keys = Object.keys(ds.series);
+
+  const n = norm(name);
+  for(const k of keys) if(norm(k)===n) return ds.series[k];
+
+  const wk = weapKey(name);
+  if(wk){
+    const hits = keys.filter(k=>weapKey(k)===wk);
+    if(hits.length===1) return ds.series[hits[0]];
+  }
+
+  if(n.length>=5){
+    const hits = keys.filter(k=>{
+      const kn=norm(k);
+      return kn.length>=5 && (kn.includes(n)||n.includes(kn));
+    });
+    if(hits.length===1) return ds.series[hits[0]];
+  }
+  return null;
+}
+
+/* Datasets that contain this object.
+   layerKey is the object's map layer; a dataset that declares a layer is only
+   matched against objects from that same layer. */
+function datasetsFor(name, layerKey){
+  const out=[];
+  for(const [code,ds] of Object.entries(D?.data||{})){
+    if(layerKey && ds.layer && ds.layer!==layerKey) continue;
+    const s = seriesFor(code,name);
+    if(s) out.push({code,ds,points:s});
+  }
+  return out;
+}
+
+/* ============ MAP ============ */
+const map = L.map('map',{zoomControl:true}).setView([44,66],6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {attribution:'© OpenStreetMap', maxZoom:19}).addTo(map);
+
+const bounds=[];
+function addLayerRow(host,key,label,color,n,isLine){
+  host.insertAdjacentHTML('beforeend',
+    `<div class="row"><input type="checkbox" id="k_${key}" data-lyr="${key}" checked>
+     <span class="${isLine?'bar':'dot'}" style="background:${color}"></span>
+     <label for="k_${key}">${label}</label><span class="n">${n}</span></div>`);
+}
+
+function buildMap(){
+  /* -- zone polygons -- */
+  const hz=document.getElementById('gZones'); let zi=0, zn=0;
+  for(const [name,gj] of Object.entries(D.zones||{})){
+    const col = cssv(SLOTS[zi%8]); const g=L.featureGroup().addTo(map); let n=0;
+    try{
+      const gl=L.geoJSON(gj,{
+        style:{color:col,weight:1.5,opacity:.8,fillColor:col,fillOpacity:.10},
+        onEachFeature:(f,l)=>{ n++;
+          const p=f.properties||{};
+          const t=p.name||p.NAME||p.Name||p.zone||p.uchastok||name;
+          const rows=Object.entries(p).slice(0,8)
+            .map(([k,v])=>`${k}: <b>${v}</b>`).join('<br>');
+          l.bindPopup(`<b>${t}</b><br>${rows}`);
+        }});
+      gl.addTo(g); if(gl.getBounds().isValid()) bounds.push(gl.getBounds());
+    }catch(e){ console.warn('zone',name,e); }
+    S.mapLayers['z_'+name]=g; zn+=n;
+    addLayerRow(hz,'z_'+name,name,col,n,false); zi++;
+  }
+  if(!zi) hz.innerHTML='<div class="note">No polygons — put .shp files in <code>shapefiles/</code></div>';
+
+  /* -- lines -- */
+  const hl=document.getElementById('gLines'); let ln=0;
+  for(const key of LINE_KEYS){
+    const items=D.kml?.[key]||[]; if(!items.length) continue;
+    const st=LAYER_STYLE[key], col=cssv(st.color), g=L.featureGroup().addTo(map);
+    items.forEach(it=>{
+      if(!it.coords||it.coords.length<2) return;
+      const pl=L.polyline(it.coords,{color:col,weight:st.w,opacity:.85,dashArray:st.dash?st.dash.join(','):null});
+      bindFeature(pl,it.name,st.label,key); g.addLayer(pl); ln++;
+      /* index lines too, otherwise rivers and canals cannot be found by name */
+      S.markerIndex.set(norm(it.name),{feat:pl,name:it.name,layer:key});
+    });
+    if(g.getBounds().isValid()) bounds.push(g.getBounds());
+    S.mapLayers[key]=g; addLayerRow(hl,key,st.label,col,items.length,true);
+  }
+  if(!ln) hl.innerHTML='<div class="note">No lines — put a .kmz file in <code>kml/</code></div>';
+
+  /* -- points -- */
+  const hp=document.getElementById('gPoints'); let pn=0;
+  for(const key of PT_KEYS){
+    const items=D.kml?.[key]||[]; if(!items.length) continue;
+    const st=LAYER_STYLE[key], col=cssv(st.color), g=L.featureGroup().addTo(map);
+    items.forEach(it=>{
+      if(typeof it.lat!=='number'||typeof it.lon!=='number') return;
+      const m=L.circleMarker([it.lat,it.lon],{radius:st.r,fillColor:col,color:col,
+        weight:1.5,opacity:1,fillOpacity:.85});
+      bindFeature(m,it.name,st.label,key); g.addLayer(m); pn++;
+      S.markerIndex.set(norm(it.name),{feat:m,name:it.name,layer:key});
+    });
+    if(g.getBounds().isValid()) bounds.push(g.getBounds());
+    S.mapLayers[key]=g; addLayerRow(hp,key,st.label,col,items.length,false);
+  }
+  if(!pn) hp.innerHTML='<div class="note">No points — put a .kmz file in <code>kml/</code></div>';
+
+  document.querySelectorAll('input[data-lyr]').forEach(c=>{
+    c.addEventListener('change',e=>{
+      const g=S.mapLayers[e.target.dataset.lyr]; if(!g) return;
+      e.target.checked ? map.addLayer(g) : map.removeLayer(g);
+    });
+  });
+
+  if(bounds.length){
+    let b=bounds[0]; bounds.slice(1).forEach(x=>b=b.extend(x));
+    map.fitBounds(b,{padding:[25,25]});
+  }
+  return {zn,ln,pn};
+}
+
+/* popup + "show chart" button */
+function bindFeature(layer,name,kindLabel,key){
+  const ds=datasetsFor(name,key);
+  let html=`<b>${name}</b><br><span style="color:#888">${kindLabel}</span>`;
+  if(ds.length){
+    html+='<br>'+ds.map(d=>`${d.ds.label}${d.ds.unit?` (${d.ds.unit})`:''}`).join('<br>');
+    html+=`<br><button class="pbtn" data-open="${encodeURIComponent(name)}">Show chart</button>`;
+  } else {
+    html+='<br><span style="color:#888">no time-series data</span>';
+  }
+  layer.bindPopup(html);
+  layer.on('popupopen',e=>{
+    const b=e.popup.getElement().querySelector('[data-open]');
+    if(b) b.onclick=()=>{ selectObject(decodeURIComponent(b.dataset.open),key); map.closePopup(); };
+  });
+  layer.on('click',()=>{ if(ds.length) selectObject(name,key); });
+}
+
+function selectObject(name,layerKey){
+  S.selected=name; S.selectedLayer=layerKey||null; S.tab='object';
+  document.querySelectorAll('.tab').forEach(t=>
+    t.setAttribute('aria-selected', t.dataset.tab==='object'));
+  document.getElementById('charts').classList.remove('collapsed');
+  render();
+}
+
+/* ============ CHARTS ============ */
+function destroyCharts(){ S.charts.forEach(c=>c.destroy()); S.charts=[]; }
+
+function chartOptions(unit){
+  const ink=cssv('--ink'), muted=cssv('--muted'), grid=cssv('--grid'),
+        axis=cssv('--axis'), surf=cssv('--surface-1');
+  return {
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index', intersect:false},   /* generous hover target */
+    layout:{padding:{top:4,right:6}},
+    plugins:{
+      legend:{display:true, position:'bottom', align:'start',
+        labels:{boxWidth:9,boxHeight:9,usePointStyle:true,pointStyle:'circle',
+                color:cssv('--ink-2'),font:{size:10.5},padding:11}},
+      tooltip:{backgroundColor:surf, titleColor:ink, bodyColor:cssv('--ink-2'),
+        borderColor:cssv('--hair'), borderWidth:1, padding:9, cornerRadius:6,
+        titleFont:{size:11.5,weight:'600'}, bodyFont:{size:11}, boxWidth:8,
+        boxHeight:8, usePointStyle:true, displayColors:true,
+        callbacks:{ label:c=>` ${c.dataset.label}: ${fmt(c.parsed.y)}${unit?' '+unit:''}` }}
+    },
+    scales:{
+      x:{ grid:{display:false}, border:{color:axis},
+          ticks:{color:muted,font:{size:10},maxRotation:0,
+                 autoSkip:S.res!=='monthly', maxTicksLimit:8,
+                 /* monthly step: label January only, as the year alone —
+                    otherwise 72 labels collide */
+                 callback:function(v,i){
+                   const l=String(this.getLabelForValue(v));
+                   if(S.res!=='monthly') return l;
+                   if(/^\d{4}$/.test(l)) return l;      /* annual series — show the year */
+                   return l.endsWith('-01') ? l.slice(0,4) : '';
+                 }}},
+      y:{ grid:{color:grid,drawTicks:false},              /* solid hairlines */
+          border:{display:false},
+          ticks:{color:muted,font:{size:10},padding:6,maxTicksLimit:6,
+                 callback:v=>fmt(v,1)},
+          title:{display:!!unit,text:unit,color:muted,font:{size:10}}}
+    },
+    elements:{ line:{borderWidth:2,tension:.25},
+               point:{radius:0,hoverRadius:5,hitRadius:14,
+                      hoverBorderWidth:2,hoverBorderColor:surf} }
+  };
+}
+
+/* Draws one chart card. series = [{key,label,points,unit}] */
+function drawCard(host,title,sub,series,unit){
+  if(!series.length || series.every(s=>!s.points||!Object.keys(s.points).length)){
+    return;
+  }
+  const labels=[...new Set(series.flatMap(s=>Object.keys(s.points||{})))].sort();
+  const card=document.createElement('div'); card.className='card';
+  card.innerHTML=`<h3>${title}</h3><div class="sub">${sub||''}</div>
+                  <div class="plot"><canvas></canvas></div>`;
+  host.appendChild(card);
+
+  /* single series → slot 1 (the title names it); several → slots in order */
+  const ds=series.map((s,i)=>{
+    const c=slotColor(i);
+    return {label:s.label, borderColor:c, backgroundColor:c, pointBackgroundColor:c,
+            data:labels.map(t=>s.points?.[t] ?? null), spanGaps:true,
+            borderDash:s.dash||undefined};
+  });
+  const opt=chartOptions(unit);
+  if(series.length===1) opt.plugins.legend.display=false;  /* the title names the series */
+  S.charts.push(new Chart(card.querySelector('canvas'),
+    {type:'line', data:{labels,datasets:ds}, options:opt}));
+}
+
+/* Table view — every value readable without hovering */
+function drawTable(host,series,unit){
+  const labels=[...new Set(series.flatMap(s=>Object.keys(s.points||{})))].sort();
+  if(!labels.length){ host.innerHTML='<div class="empty">No data for the selected period.</div>'; return; }
+  let h=`<div class="tvwrap"><table class="tv"><thead><tr><th>Period</th>`;
+  series.forEach(s=>h+=`<th>${s.label}${unit?` , ${unit}`:''}</th>`);
+  h+=`</tr></thead><tbody>`;
+  labels.forEach(t=>{
+    h+=`<tr><td>${t}</td>`;
+    series.forEach(s=>h+=`<td>${fmt(s.points?.[t])}</td>`);
+    h+=`</tr>`;
+  });
+  host.innerHTML=h+`</tbody></table></div>`;
+}
+
+/* Takes the top-N objects of a dataset + "Other" (the ≤8 colour rule) */
+function topSeries(dsCode,limit=7){
+  const ds=D?.data?.[dsCode]; if(!ds) return [];
+  const entries=Object.entries(ds.series).map(([name,pts])=>{
+    /* magnitude over the WHOLE period, so the filter never reorders or recolours */
+    const raw=Object.values(pts).filter(v=>typeof v==='number');
+    return {name, points:shape(pts,ds.unit)||{},
+            mag:raw.length?raw.reduce((a,b)=>a+b,0)/raw.length:0};
+  }).filter(e=>Object.keys(e.points).length);
+  entries.sort((a,b)=> b.mag-a.mag || a.name.localeCompare(b.name));
+  const head=entries.slice(0,limit);
+  const tail=entries.slice(limit);
+  const out=head.map(e=>({key:e.name,label:e.name,points:e.points}));
+  if(tail.length){
+    const agg={};
+    tail.forEach(e=>Object.entries(e.points).forEach(([t,v])=>agg[t]=(agg[t]||0)+v));
+    const rate=isRate(ds.unit);
+    if(rate) Object.keys(agg).forEach(t=>agg[t]/=tail.length);
+    /* label it as an aggregate, otherwise it reads as a single object */
+    out.push({key:'__other__',
+      label:`Other ${tail.length} — ${rate?'mean':'sum'}`, points:agg});
+  }
+  return out;
+}
+
+function ser(dsCode,name,labelOverride){
+  const ds=D?.data?.[dsCode]; if(!ds) return null;
+  const pts=name?seriesFor(dsCode,name):null;
+  if(name&&!pts) return null;
+  return {key:labelOverride||dsCode, label:labelOverride||ds.label,
+          points:shape(pts,ds.unit), unit:ds.unit};
+}
+
+/* Finds a map object by its CSV name (the same matching, in reverse) */
+function findOnMap(name, layerKey){
+  const pick = v => !layerKey || v.layer===layerKey;
+  const n = norm(name);
+  const exact = S.markerIndex.get(n);
+  if(exact && pick(exact)) return exact;
+
+  const wk = weapKey(name);
+  if(wk){
+    const hits=[...S.markerIndex.values()].filter(v=>pick(v)&&weapKey(v.name)===wk);
+    if(hits.length===1) return hits[0];
+  }
+  if(n.length>=5){
+    const hits=[...S.markerIndex.values()].filter(v=>{
+      if(!pick(v)) return false;
+      const kn=norm(v.name);
+      return kn.length>=5 && (kn.includes(n)||n.includes(kn));
+    });
+    if(hits.length===1) return hits[0];
+  }
+  return null;
+}
+
+/* Landing view of the Object tab: everything that has data.
+   Shows at a glance what was picked up and what was not found on the map. */
+function listObjects(host){
+  const groups=[]; let total=0, onMap=0;
+  for(const [code,ds] of Object.entries(D.data||{})){
+    const items=Object.keys(ds.series).map(name=>{
+      const m=findOnMap(name, ds.layer);
+      total++; if(m) onMap++;
+      return {name, found:!!m, layer:ds.layer};
+    });
+    if(items.length) groups.push({code,ds,items});
+  }
+  if(!groups.length){ host.innerHTML='<div class="empty">No data.</div>'; return; }
+
+  const miss=total-onMap;
+  host.insertAdjacentHTML('beforeend',
+    `<div class="tiles">
+       <div class="tile"><div class="k">Objects with data</div><div class="v">${total}</div></div>
+       <div class="tile"><div class="k">Found on the map</div><div class="v">${onMap}</div></div>
+       <div class="tile"><div class="k">Tables only</div><div class="v">${miss}</div></div>
+     </div>
+     <div class="hint">Click an object to see its charts.
+       ${miss?'A ○ marker means the object is in the CSV but was not found on the map — its data is still available.':''}</div>`);
+
+  const wrap=document.createElement('div'); wrap.className='objgrid'; host.appendChild(wrap);
+  groups.forEach(g=>{
+    const col=document.createElement('div'); col.className='objcol';
+    col.innerHTML=`<h4>${g.ds.label}<span>${g.ds.unit?', '+g.ds.unit:''}</span></h4>`;
+    g.items.forEach(it=>{
+      const b=document.createElement('button');
+      b.className='objitem'+(it.found?'':' nomap');
+      b.innerHTML=`<span class="pin">${it.found?'●':'○'}</span><span>${it.name}</span>`;
+      b.onclick=()=>{
+        const m=findOnMap(it.name,it.layer);
+        if(m){
+          const ll = m.feat.getLatLng ? m.feat.getLatLng() : m.feat.getBounds().getCenter();
+          map.setView(ll, Math.max(map.getZoom(),8)); m.feat.openPopup();
+        }
+        selectObject(it.name, it.layer);
+      };
+      col.appendChild(b);
+    });
+    wrap.appendChild(col);
+  });
+}
+
+/* ============ TABS ============ */
+function render(){
+  destroyCharts();
+  const host=document.getElementById('cbody'); host.innerHTML='';
+  const info=document.getElementById('selInfo');
+  info.textContent = S.selected ? `Selected: ${S.selected}` : '';
+
+  if(!D?.data || !Object.keys(D.data).length){
+    host.innerHTML=`<div class="empty">No time-series data.<br>
+      Put CSV files in the <code>csv/</code> folder and run the build again.</div>`;
+    return;
+  }
+  ({object:tabObject, gauges:tabGauges, reservoir:tabReservoir,
+    demand:tabDemand, rivers:tabRivers}[S.tab]||tabObject)(host);
+}
+
+/* --- Object tab --- */
+function tabObject(host){
+  if(!S.selected){ listObjects(host); return; }
+  const found=datasetsFor(S.selected,S.selectedLayer);
+  if(!found.length){
+    host.innerHTML=`<div class="empty">No time-series data for "${S.selected}".<br>
+      Check that the name in the CSV matches the name in the KMZ.</div>`;
+    return;
+  }
+  if(S.tableView){
+    const s=found.map(f=>({key:f.code,label:`${f.ds.label}${f.ds.unit?` (${f.ds.unit})`:''}`,
+                           points:shape(f.points,f.ds.unit)}));
+    drawTable(host,s,''); return;
+  }
+  /* stat tiles: constant values and the latest value of each series */
+  const tiles=document.createElement('div'); tiles.className='tiles';
+  found.forEach(f=>{
+    const c=f.points?.const;                 /* a single value per object */
+    if(c!==undefined){
+      tiles.insertAdjacentHTML('beforeend',
+        `<div class="tile"><div class="k">${f.ds.label}</div>
+         <div class="v">${fmt(c)}<span class="u">${f.ds.unit||''}</span></div></div>`);
+      return;
+    }
+    const p=shape(f.points,f.ds.unit)||{}; const ks=Object.keys(p).sort();
+    if(!ks.length) return;
+    const last=p[ks[ks.length-1]];
+    tiles.insertAdjacentHTML('beforeend',
+      `<div class="tile"><div class="k">${f.ds.label} · ${ks[ks.length-1]}</div>
+       <div class="v">${fmt(last)}<span class="u">${f.ds.unit||''}</span></div></div>`);
+  });
+  if(tiles.children.length) host.appendChild(tiles);
+
+  /* one chart per measure — units are never mixed on a single axis */
+  const grid=document.createElement('div'); grid.className='grid2'; host.appendChild(grid);
+  let plotted=0;
+  found.forEach(f=>{
+    if(f.points?.const!==undefined) return;  /* constant value — already shown as a tile */
+    const pts=shape(f.points,f.ds.unit);
+    if(!pts||!Object.keys(pts).length) return;
+    drawCard(grid, f.ds.label, `${S.selected}${f.ds.unit?` · ${f.ds.unit}`:''}`,
+      [{key:f.code,label:f.ds.label,points:pts}], f.ds.unit);
+    plotted++;
+  });
+  if(!plotted && !tiles.children.length)
+    host.insertAdjacentHTML('beforeend',
+      `<div class="empty">No values in the selected period — widen the year range.</div>`);
+}
+
+/* --- Gauges tab: modelled against observed --- */
+function tabGauges(host){
+  const mod=D.data.gauge_modeled, obs=D.data.gauge_observed;
+  if(!mod&&!obs){
+    host.innerHTML=`<div class="empty">No gauge data.<br>
+      Export <b>Streamflow</b> from WEAP to <code>csv/gauge_modeled.csv</code>
+      and observations to <code>csv/gauge_observed.csv</code>.</div>`;
+    return;
+  }
+  const names=[...new Set([...Object.keys(mod?.series||{}),...Object.keys(obs?.series||{})])];
+  const unit=(mod||obs).unit;
+
+  if(S.tableView){
+    const s=[];
+    names.forEach(n=>{
+      if(mod) s.push({key:n+'|m',label:`${n} — modelled`,points:shape(seriesFor('gauge_modeled',n),unit)});
+      if(obs) s.push({key:n+'|o',label:`${n} — observed`,points:shape(seriesFor('gauge_observed',n),unit)});
+    });
+    drawTable(host,s,unit); return;
+  }
+
+  /* Modelled and observed for one gauge share a chart (one measure, one axis).
+     Different gauges become separate cards (small multiples). */
+  const grid=document.createElement('div'); grid.className='grid2'; host.appendChild(grid);
+  names.forEach(n=>{
+    const s=[];
+    const m=mod?shape(seriesFor('gauge_modeled',n),unit):null;
+    const o=obs?shape(seriesFor('gauge_observed',n),unit):null;
+    if(m&&Object.keys(m).length) s.push({key:'modelled',label:'Modelled',points:m});
+    if(o&&Object.keys(o).length) s.push({key:'observed',label:'Observed',points:o,dash:[5,4]});
+    /* with one series the legend is hidden, so name it in the subtitle */
+    if(s.length) drawCard(grid,n,
+      `${s.length===1 ? s[0].label : 'Streamflow'} · ${unit}`, s, unit);
+  });
+  if(!grid.children.length)
+    host.innerHTML=`<div class="empty">No values in the selected period.</div>`;
+}
+
+/* --- Reservoir tab: storage / inflow-release / evaporation — DIFFERENT units ⇒ separate charts --- */
+function tabReservoir(host){
+  const vol=D.data.reservoir_volume, inf=D.data.reservoir_inflow,
+        out=D.data.reservoir_outflow, evp=D.data.reservoir_evaporation;
+  if(!vol&&!inf&&!out&&!evp){
+    host.innerHTML=`<div class="empty">No reservoir data.<br>
+      Expected files: <code>reservoir_volume.csv</code>, <code>reservoir_inflow.csv</code>,
+      <code>reservoir_outflow.csv</code>, <code>reservoir_evaporation.csv</code>.</div>`;
+    return;
+  }
+  const firstName = d => d?Object.keys(d.series)[0]:null;
+  const name = firstName(vol)||firstName(inf)||firstName(out)||firstName(evp);
+
+  const volS = vol?{key:'Storage',label:'Storage',points:shape(seriesFor('reservoir_volume',name),vol.unit)}:null;
+  const flowS=[], constFlow=[];
+  [[inf,'reservoir_inflow','Inflow'],[out,'reservoir_outflow','Release']].forEach(([d,code,lab])=>{
+    if(!d) return;
+    const raw=seriesFor(code,name);
+    if(raw?.const!==undefined){ constFlow.push({lab,v:raw.const,unit:d.unit}); return; }
+    const p=shape(raw,d.unit);
+    if(p&&Object.keys(p).length) flowS.push({key:lab,label:lab,points:p});
+  });
+  const evpS= evp?{key:'Evaporation',label:'Evaporation',points:shape(seriesFor('reservoir_evaporation',name),evp.unit)}:null;
+
+  if(S.tableView){
+    const s=[volS,...flowS,evpS].filter(Boolean).map(x=>({...x,label:x.label}));
+    drawTable(host,s,''); return;
+  }
+
+  if(volS?.points){
+    const ks=Object.keys(volS.points).sort();
+    if(ks.length){
+      const vals=ks.map(k=>volS.points[k]);
+      const tiles=document.createElement('div'); tiles.className='tiles';
+      tiles.innerHTML=
+        `<div class="tile"><div class="k">Storage · ${ks[ks.length-1]}</div>
+           <div class="v">${fmt(vals[vals.length-1],0)}<span class="u">${vol.unit}</span></div></div>
+         <div class="tile"><div class="k">Period maximum</div>
+           <div class="v">${fmt(Math.max(...vals),0)}<span class="u">${vol.unit}</span></div></div>
+         <div class="tile"><div class="k">Period minimum</div>
+           <div class="v">${fmt(Math.min(...vals),0)}<span class="u">${vol.unit}</span></div></div>`;
+      host.appendChild(tiles);
+    }
+  }
+  /* inflow/release given as a single number become a tile, not a line */
+  if(constFlow.length){
+    const t=document.createElement('div'); t.className='tiles';
+    constFlow.forEach(c=>t.insertAdjacentHTML('beforeend',
+      `<div class="tile"><div class="k">${c.lab} (constant)</div>
+       <div class="v">${fmt(c.v)}<span class="u">${c.unit}</span></div></div>`));
+    host.appendChild(t);
+  }
+
+  const grid=document.createElement('div'); grid.className='grid2'; host.appendChild(grid);
+  if(volS)  drawCard(grid,'Reservoir storage',`${name} · ${vol.unit}`,[volS],vol.unit);
+  if(flowS.length) drawCard(grid,'Inflow and release',`${name} · ${(inf||out).unit}`,flowS,(inf||out).unit);
+  if(evpS)  drawCard(grid,'Evaporation',`${name} · ${evp.unit}`,[evpS],evp.unit);
+}
+
+/* --- Demand tab --- */
+function tabDemand(host){
+  const cons=D.data.demand_consumption, unmet=D.data.unmet_demand,
+        cov=D.data.coverage, gw=D.data.groundwater_volume;
+  if(!cons&&!unmet&&!cov&&!gw){
+    host.innerHTML=`<div class="empty">No demand data.<br>
+      Expected: <code>demand_consumption.csv</code>, <code>unmet_demand.csv</code>,
+      <code>coverage.csv</code>, <code>groundwater_volume.csv</code>.</div>`;
+    return;
+  }
+  if(S.tableView){
+    const s=topSeries('demand_consumption')||[];
+    drawTable(host,s,cons?.unit||''); return;
+  }
+  if(cons){
+    const all=Object.values(cons.series).map(p=>shape(p,cons.unit));
+    const tot={};
+    all.forEach(p=>Object.entries(p||{}).forEach(([t,v])=>tot[t]=(tot[t]||0)+v));
+    const vals=Object.values(tot);
+    if(vals.length){
+      const tiles=document.createElement('div'); tiles.className='tiles';
+      tiles.innerHTML=`<div class="tile"><div class="k">Demand sites</div>
+          <div class="v">${Object.keys(cons.series).length}</div></div>
+        <div class="tile"><div class="k">Period total</div>
+          <div class="v">${fmt(vals.reduce((a,b)=>a+b,0),0)}<span class="u">${cons.unit}</span></div></div>`;
+      host.appendChild(tiles);
+    }
+  }
+  const grid=document.createElement('div'); grid.className='grid2'; host.appendChild(grid);
+  if(cons)  drawCard(grid,'Demand by site',`Top 7 and the rest · ${cons.unit}`,topSeries('demand_consumption'),cons.unit);
+  if(unmet) drawCard(grid,'Unmet demand',`Top 7 and the rest · ${unmet.unit}`,topSeries('unmet_demand'),unmet.unit);
+  if(cov)   drawCard(grid,'Demand coverage',`Top 7 and the rest · ${cov.unit}`,topSeries('coverage'),cov.unit);
+  if(gw)    drawCard(grid,'Groundwater',`Storage · ${gw.unit}`,topSeries('groundwater_volume'),gw.unit);
+}
+
+/* --- Rivers & e-flow tab --- */
+function tabRivers(host){
+  const riv=D.data.river_headflow, ef=D.data.eflow_requirement,
+        cd=D.data.canal_diversion, lf=D.data.link_flow;
+  if(!riv&&!ef&&!cd&&!lf){
+    host.innerHTML=`<div class="empty">No river, canal or e-flow data.<br>
+      Expected: <code>river_headflow.csv</code>, <code>eflow_requirement.csv</code>,
+      <code>canal_diversion.csv</code>.</div>`;
+    return;
+  }
+  if(S.tableView){ drawTable(host,topSeries('river_headflow'),riv?.unit||''); return; }
+
+  /* canals carry one value each — tiles, not a chart */
+  if(cd){
+    const tiles=document.createElement('div'); tiles.className='tiles';
+    Object.entries(cd.series).slice(0,12).forEach(([n,p])=>{
+      const v=p.const ?? Object.values(p)[0];
+      tiles.insertAdjacentHTML('beforeend',
+        `<div class="tile"><div class="k">${n}</div>
+         <div class="v">${fmt(v,1)}<span class="u">${cd.unit}</span></div></div>`);
+    });
+    if(tiles.children.length){
+      host.insertAdjacentHTML('beforeend',
+        `<div class="sub" style="font-size:10px;color:var(--muted);margin-bottom:7px">Diversion share by canal</div>`);
+      host.appendChild(tiles);
+    }
+  }
+  const grid=document.createElement('div'); grid.className='grid2'; host.appendChild(grid);
+  if(riv) drawCard(grid,'River headflow',`Top 7 and the rest · ${riv.unit}`,topSeries('river_headflow'),riv.unit);
+  if(ef)  drawCard(grid,'E-flow requirements',`Top 7 and the rest · ${ef.unit}`,topSeries('eflow_requirement'),ef.unit);
+  if(lf)  drawCard(grid,'Transmission link flow',`Top 7 and the rest · ${lf.unit}`,topSeries('link_flow'),lf.unit);
+}
+
+/* ============ FILTERS AND CONTROLS ============ */
+function initFilters(){
+  S.times=allTimes();
+  const years=[...new Set(S.times.map(yearOf))].filter(Boolean).sort();
+  const from=document.getElementById('fFrom'), to=document.getElementById('fTo');
+  if(!years.length){ from.disabled=to.disabled=true; return; }
+  years.forEach(y=>{
+    from.insertAdjacentHTML('beforeend',`<option value="${y}">${y}</option>`);
+    to.insertAdjacentHTML('beforeend',`<option value="${y}">${y}</option>`);
+  });
+  S.from=years[0]; S.to=years[years.length-1];
+  from.value=S.from; to.value=S.to;
+  from.onchange=()=>{ S.from=+from.value; if(S.from>S.to){S.to=S.from;to.value=S.to;} render(); };
+  to.onchange  =()=>{ S.to=+to.value;   if(S.to<S.from){S.from=S.to;from.value=S.from;} render(); };
+
+  /* annual-only data makes the month step meaningless */
+  const anyMonthly=S.times.some(t=>t.includes('-'));
+  if(!anyMonthly){
+    S.res='annual';
+    document.querySelectorAll('#fRes button').forEach(b=>
+      b.setAttribute('aria-pressed', b.dataset.res==='annual'));
+    document.querySelector('#fRes button[data-res="monthly"]').disabled=true;
+  }
+}
+
+document.querySelectorAll('#fRes button').forEach(b=>b.onclick=()=>{
+  if(b.disabled) return;
+  S.res=b.dataset.res;
+  document.querySelectorAll('#fRes button').forEach(x=>
+    x.setAttribute('aria-pressed', x===b)); render();
+});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  S.tab=t.dataset.tab;
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  render();
+});
+document.getElementById('tableBtn').onclick=e=>{
+  S.tableView=!S.tableView;
+  e.currentTarget.setAttribute('aria-pressed',S.tableView); render();
+};
+document.getElementById('collapseBtn').onclick=e=>{
+  const c=document.getElementById('charts');
+  c.classList.toggle('collapsed');
+  e.currentTarget.textContent=c.classList.contains('collapsed')?'▴':'▾';
+  setTimeout(()=>map.invalidateSize(),210);
+};
+document.getElementById('themeBtn').onclick=()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+             : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+  document.documentElement.setAttribute('data-theme',next);
+  render();                      /* charts redraw for the new theme */
+};
+
+/* ============ BOOT ============ */
+function boot(){
+  const b=document.getElementById('banner');
+  if(!D){
+    b.className='banner warn';
+    b.innerHTML='<b>weap-data.js is missing</b><br>Put your files in <code>shapefiles/</code>, <code>kml/</code> and <code>csv/</code>, then run <code>run.bat</code>';
+    return;
+  }
+  /* the old build_data.py wrote series into a csv field — this page expects data */
+  if(!D.data && D.csv){
+    b.className='banner warn';
+    b.innerHTML='<b>Data was built by an outdated script</b><br>'+
+      'An old <code>build_data.py</code> is still in the folder. Unpack the archive into an '+
+      '<u>empty</u> folder (not over the old one) and run <code>run.bat</code> again.';
+    D.data={};
+  }
+  localizeDatasets();                 /* before anything reads labels or units */
+  if(D.generated) document.getElementById('gen').textContent='Built '+D.generated;
+
+  const {zn,ln,pn}=buildMap();
+  initFilters();
+
+  /* dataset summary in the sidebar */
+  const gd=document.getElementById('gData');
+  const sets=Object.entries(D.data||{});
+  if(sets.length){
+    sets.forEach(([code,ds])=>{
+      gd.insertAdjacentHTML('beforeend',
+        `<div class="row" style="cursor:default">
+           <label style="cursor:default">${ds.label}
+             <span style="color:var(--muted)">${ds.unit?', '+ds.unit:''}</span></label>
+           <span class="n">${Object.keys(ds.series).length}</span></div>`);
+    });
+  } else {
+    gd.innerHTML='<div class="note">No CSV files — put your tables in <code>csv/</code></div>';
+  }
+
+  const total=zn+ln+pn;
+  b.className = total ? 'banner ok' : 'banner warn';
+  b.innerHTML = total
+    ? `Loaded <b>${total}</b> objects<br>${pn} points · ${ln} lines · ${zn} polygons
+       ${sets.length?`<br><b>${sets.length}</b> time-series datasets`:'<br>no time-series data'}`
+    : 'No data. Check the folders and run the build again.';
+
+  render();
+  setTimeout(()=>map.invalidateSize(),120);
+}
+
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+else boot();
+</script>
+</body>
+</html>
